@@ -1,6 +1,6 @@
 <template>
   <div id="container">
-    <div id="svg" v-html="svgString" style="background-color: #FEF4D2;"></div>
+    <div id="svg" v-html="svgString"></div>
   </div>
 </template>
 
@@ -141,7 +141,7 @@ watch(()=>svgString.value,()=>{
       const container = document.getElementById('container')
       container?.addEventListener('mousedown', mouseDown, false);
       container?.addEventListener('mousemove', drag, false);
-      container?.addEventListener('mouseup', mouseUp, false);
+      document?.addEventListener('mouseup', mouseUp, false);
       container?.addEventListener('wheel', zoom, false);
     })
   }
@@ -190,6 +190,11 @@ onMounted(()=>{
 })
 onUnmounted(()=>{
   document.removeEventListener('wheel',wheelEvent,false)
+  const container = document.getElementById('container')
+  container?.removeEventListener('mousedown', mouseDown, false);
+  container?.removeEventListener('mousemove', drag, false);
+  document?.removeEventListener('mouseup', mouseUp, false);
+  container?.removeEventListener('wheel', zoom, false);
 })
 
 /*

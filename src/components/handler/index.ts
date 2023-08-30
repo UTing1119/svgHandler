@@ -1,7 +1,9 @@
 import svgHandler from "./svgHandler.vue";
+import type{ optionType } from "./svgHandler";
 
 // 按需引入
 export { svgHandler };
+export type { optionType }
 
 const component = [svgHandler];
 
