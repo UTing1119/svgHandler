@@ -2,8 +2,9 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import App from './App.vue'
-import handler from './components/handler'
+import { svgWheel, svgDrag } from "svg-zoom-drag-vue-directives";
 
 const app = createApp(App);
-app.use(handler); //注册
+svgWheel(app);
+svgDrag(app);
 app.mount("#app");

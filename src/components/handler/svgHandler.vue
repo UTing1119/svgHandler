@@ -1,8 +1,5 @@
 <template>
   <div id="svg" v-html="svgString" style="background-color: #FEF4D2;" v-svgWheel v-svgDrag></div>
-  <div style="height: 100px; width: 100px; background-color: #FEF4D2;">
-    測試資料
-  </div>
 </template>
 
 <script lang='ts'>
@@ -29,7 +26,7 @@ const props = defineProps({
   },
   optionProp:{
     type: Object as PropType<optionType>,
-    default: ()=>({}),
+    default: ()=>({items: []}),
   }
 })
 

@@ -1,46 +1,42 @@
 # svgHandler
 
-This template should help get you started developing with Vue 3 in Vite.
+Vite + Vue 3 + TypeScript
 
-## Recommended IDE Setup
+## use
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+```
+import './assets/main.css'
 
-## Type Support for `.vue` Imports in TS
+import { createApp } from 'vue'
+import App from './App.vue'
+import { svgWheel, svgDrag } from "svg-zoom-drag-vue-directives"; // need to be installed
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+const app = createApp(App);
+svgWheel(app);
+svgDrag(app);
+app.mount("#app");
 ```
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
 ```
+<script lang="ts" setup>
+import {svgHandler} from 'vue-svg-handler'
+import svg from 'YOUR_SVG.svg'
+import { onMounted,ref } from 'vue'
+import axios from 'axios'
 
-### Type-Check, Compile and Minify for Production
+const svgString = ref("")
 
-```sh
-npm run build
-```
+onMounted(()=>{
+  axios.get(svg).then(res=>{
+    svgString.value = res.data
+  })
+})
 
-### Lint with [ESLint](https://eslint.org/)
+</script>
 
-```sh
-npm run lint
+<template>
+  <svgHandler :svgGet="svgString" />
+</template>
+
+<style scoped></style>
 ```
