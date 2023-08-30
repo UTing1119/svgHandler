@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import {svgHandler} from 'vue-svg-handler'
+import type {optionType} from 'vue-svg-handler'
 import svgHandlerTest from './components/handler/svgHandler.vue'
-import type{optionType} from './components/handler/svgHandler'
+import type{optionInterface} from './components/handler/svgHandler'
 import car from './svg/car_3.svg'
 import battery from './svg/battery.svg'
 import { onMounted,ref } from 'vue'
@@ -9,7 +10,7 @@ import axios from 'axios'
 
 const svg = ref("")
 
-const option = ref<optionType>({
+const option = ref<optionInterface>({
   items:[
     {
       name: 'battery_2',

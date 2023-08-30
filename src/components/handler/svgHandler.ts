@@ -1,4 +1,4 @@
-export interface optionType{
+export interface optionInterface{
   items: Array<item>
   background?: string
 }
@@ -6,7 +6,7 @@ export interface optionType{
 export interface item{
   name: string
   gsap?: gsap
-  keyframeAnimation?: keyframeAnimation
+  // keyframeAnimation?: keyframeAnimation
   textStyle?: textStyle
   itemStyle?: itemStyle
 }
@@ -41,7 +41,7 @@ interface motionPath{
 }
 
 interface textStyle{
-  content: string
+  content?: string
   fontSize?: string
   color?: string
 }

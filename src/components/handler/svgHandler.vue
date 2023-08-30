@@ -13,7 +13,7 @@ export default defineComponent({
 <script setup lang='ts'>
 import { toRef, onMounted, watch, nextTick,onUnmounted, } from 'vue';
 import type { PropType } from 'vue';
-import type { optionType } from './svgHandler'
+import type { optionInterface } from './svgHandler'
 
 import gsap from 'gsap';
 import { CSSPlugin } from "gsap/CSSPlugin";
@@ -27,7 +27,7 @@ const props = defineProps({
     default: '',
   },
   optionProp:{
-    type: Object as PropType<optionType>,
+    type: Object as PropType<optionInterface>,
     default: ()=>({items: []}),
   }
 })
@@ -107,29 +107,29 @@ const handle_option = () => {
           element.style.color = item.textStyle.color
       }
         
-      if(item.keyframeAnimation){
-        var list:any = {}
+      // if(item.keyframeAnimation){
+      //   var list:any = {}
         
-        item.keyframeAnimation.keyframes.forEach(keyframe=>{
-          var precent = keyframe.precent + "%"
-          var k:any = {}
-          if(keyframe.rotate !== undefined)
-            k.rotate = keyframe.rotate
-          if(keyframe.x !== undefined)
-            k.x = keyframe.x
-          if(keyframe.y !== undefined)
-            k.y = keyframe.y
-          list[precent] = Object.assign({},k)
-        })
+      //   item.keyframeAnimation.keyframes.forEach(keyframe=>{
+      //     var precent = keyframe.precent + "%"
+      //     var k:any = {}
+      //     if(keyframe.rotate !== undefined)
+      //       k.rotate = keyframe.rotate
+      //     if(keyframe.x !== undefined)
+      //       k.x = keyframe.x
+      //     if(keyframe.y !== undefined)
+      //       k.y = keyframe.y
+      //     list[precent] = Object.assign({},k)
+      //   })
 
-        gsap.to(element,{
-          keyframes: list,
-          duration: item.keyframeAnimation.duration,
-          repeat: item.keyframeAnimation.loop? -1:0,
-          delay: item.keyframeAnimation.delay,
-          ease: item.keyframeAnimation.easingFunction === undefined? "linear": item.keyframeAnimation.easingFunction
-        })
-      }
+      //   gsap.to(element,{
+      //     keyframes: list,
+      //     duration: item.keyframeAnimation.duration,
+      //     repeat: item.keyframeAnimation.loop? -1:0,
+      //     delay: item.keyframeAnimation.delay,
+      //     ease: item.keyframeAnimation.easingFunction === undefined? "linear": item.keyframeAnimation.easingFunction
+      //   })
+      // }
     }
   })
 }

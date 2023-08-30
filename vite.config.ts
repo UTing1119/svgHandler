@@ -4,6 +4,7 @@ import { resolve } from "path"
 import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
+    base:"/svg-handler/", // 這行可以不寫
     plugins: [vue()],
     build: {
         outDir: "svg-handler", //输出文件名称
